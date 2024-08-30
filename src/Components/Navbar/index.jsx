@@ -1,31 +1,31 @@
 import { NavLink } from "react-router-dom";
-import { useId } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 const NavRight = [
-    { name: 'Shoppiko', path: '/' },
-    { name: 'All', path: '/' },
-    { name: 'Clothes', path: '/clothes' },
-    { name: 'Electronics', path: '/electronics' },
-    { name: 'Furnitures', path: '/furnitures' },
-    { name: 'Toys', path: '/toys' },
-    { name: 'Others', path: '/others' },
+    { id: uuidv4(), name: 'Shoppiko', path: '/' },
+    { id: uuidv4(), name: 'All', path: '/' },
+    { id: uuidv4(), name: 'Clothes', path: '/clothes' },
+    { id: uuidv4(), name: 'Electronics', path: '/electronics' },
+    { id: uuidv4(), name: 'Furnitures', path: '/furnitures' },
+    { id: uuidv4(), name: 'Toys', path: '/toys' },
+    { id: uuidv4(), name: 'Others', path: '/others' },
 ];
 
 const NavLeft = [
-    { name: 'My Orders', path: '/my-orders' },
-    { name: 'My Account', path: '/my-account' },
-    { name: 'Sign In', path: '/sign-in' },
+    { id: uuidv4(), name: 'My Orders', path: '/my-orders' },
+    { id: uuidv4(), name: 'My Account', path: '/my-account' },
+    { id: uuidv4(), name: 'Sign In', path: '/sign-in' },
 ];
 
 export function Navbar() {
     const activeStyle = "underline underline-offset-4";
 
     return (
-        <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light'>
+        <nav className='flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light'>
             {/* Parte izquierda */}
             <ul className='flex items-center gap-3'>
                 {NavRight.map((component, index) => (
-                    <li key={useId} className={index === 0 ? 'font-semibold text-lg' : ''}>
+                    <li key={component.id} className={index === 0 ? 'font-semibold text-lg' : ''}>
                         <NavLink 
                             to={component.path} 
                             className={({ isActive }) => (isActive && index !== 0) ? activeStyle : ''}
@@ -45,7 +45,7 @@ export function Navbar() {
                     ✉️s.gaggero87@gmail.com
                 </li>
                 {NavLeft.map((component) => (
-                    <li key={useId}>
+                    <li key={component.id}>
                         <NavLink to={component.path}>
                             {component.name}
                         </NavLink>
