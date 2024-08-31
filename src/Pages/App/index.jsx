@@ -1,12 +1,13 @@
 import { useRoutes, BrowserRouter } from 'react-router-dom';
+import { Navbar } from '../../Components/Navbar';
+import { Layout } from '../../Components/Layout';
+import { ShoppingCardProvider } from '../../Context';
 import Home from '../Home';
 import MyAccount from '../MyAccount';
 import MyOrder from '../MyOrder';
 import MyOrders from '../MyOrders';
 import NotFound from '../NotFound';
 import SignIn from '../SignIn';
-import { Navbar } from '../../Components/Navbar';
-import { Layout } from '../../Components/Layout';
 import './App.css';
 
 const AppRouter = () =>{
@@ -24,12 +25,14 @@ const AppRouter = () =>{
 function App() {
   
   return (
-    <BrowserRouter>
-     <Navbar />
-      <Layout>
-        <AppRouter />
-      </Layout>
-    </BrowserRouter>
+    <ShoppingCardProvider>
+      <BrowserRouter>
+      <Navbar />
+        <Layout>
+          <AppRouter />
+        </Layout>
+      </BrowserRouter>
+    </ShoppingCardProvider>
   )
 }
 

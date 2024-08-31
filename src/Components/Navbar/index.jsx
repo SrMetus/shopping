@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useShoppingCard } from "../../Hooks/useShoppingCard";
 import { v4 as uuidv4 } from 'uuid';
 
 const NavRight = [
@@ -19,6 +20,7 @@ const NavLeft = [
 
 export function Navbar() {
     const activeStyle = "underline underline-offset-4";
+    const { count } = useShoppingCard();
 
     return (
         <nav className='flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light'>
@@ -51,8 +53,9 @@ export function Navbar() {
                         </NavLink>
                     </li>
                 ))}
-                <li>
-                    🛒 $0
+                <li className="flex items-center text-lg">
+                    <span>🛒</span>
+                    <span className="flex items-center justify-center text-sm text-white rounded-full bg-orange-500 w-4 h-4">{count}</span>
                 </li>
             </ul>
         </nav>
