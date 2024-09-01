@@ -2,7 +2,7 @@ export const SideMenu = ({ openMenu, handleCloseMenu, title, children }) => {
   return (
     <aside
       className={`${openMenu ? "flex" : "hidden"} 
-        top-[68px] w-[360px] h-[calc(100vh-68px)] flex-col fixed right-0 border border-black rounded-lg bg-white`}
+        top-[68px] w-[360px] h-[calc(100vh-68px)] flex-col fixed right-0 border scrollable-cards border-black rounded-lg bg-white z-50`}
     >
       <div className="flex justify-between items-center p-3">
         <h2 className="text-xl font-medium">{title}</h2>

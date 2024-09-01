@@ -12,7 +12,6 @@ const Home = () => {
       try {
         const response = await fetch(`${apiUrl}`)
         const data = await response.json()
-        console.log(data)  // debug
         setItems(data)
       } catch (err) {
         console.error(`Ocurrio un error: ${err}`)

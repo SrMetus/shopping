@@ -1,6 +1,6 @@
 import { useShoppingCard } from "../../Hooks/useShoppingCard";
 
-export const Card = ({ title, price, category, description, image }) => {
+export const Card = ({ id, title, price, category, description, image }) => {
   const {
     increment,
     openProductDetail,
@@ -20,7 +20,7 @@ export const Card = ({ title, price, category, description, image }) => {
   const handleAddProductToCard = (e) => {
     e.stopPropagation(); // Evita que el clic en el botón propague al contenedor de la tarjeta
     increment();
-    addProductToCard({ title, price, category, description, image });
+    addProductToCard({ id, title, price, category, description, image });
     openCheckoutSideMenu();
     closeProductDetail();
   };
