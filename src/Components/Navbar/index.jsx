@@ -23,7 +23,7 @@ export function Navbar() {
   const { count } = useShoppingCard();
 
   return (
-    <nav className="flex justify-between items-center fixed top-0 z-10 w-full py-5 px-8 text-sm font-light">
+    <nav className="flex justify-between items-center fixed top-0 z-50 w-full py-5 px-8 text-sm font-light">
       {/* Parte izquierda */}
       <ul className="flex items-center gap-3">
         {NavRight.map((component, index) => (

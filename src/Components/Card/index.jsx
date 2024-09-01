@@ -9,6 +9,7 @@ export const Card = ({ id, title, price, category, description, image }) => {
     addProductToCard,
     openCheckoutSideMenu,
     closeCheckoutSideMenu,
+    cardProducts, // Asegúrate de que cardProducts esté disponible
   } = useShoppingCard();
 
   const showProduct = () => {
@@ -25,9 +26,53 @@ export const Card = ({ id, title, price, category, description, image }) => {
     closeProductDetail();
   };
 
+  // Verifica si el producto ya está en el carrito
+  const isInCard = cardProducts.some((item) => item.id === id);
+
+  const renderIcon = () => {
+    return isInCard ? (
+      <button className="absolute top-0 right-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="size-4 text-white"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m4.5 12.75 6 6 9-13.5"
+          />
+        </svg>
+      </button>
+    ) : (
+      <button
+        className="absolute top-0 right-0 flex justify-center items-center bg-white/70 w-6 h-6 rounded-full m-2"
+        onClick={handleAddProductToCard}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="size-4" // Asegúrate de que el color esté visible
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </button>
+    );
+  };
+
   return (
     <div
-      className="bg-white cursor-pointer w-56 h-60 rounded-lg"
+      className="bg-white cursor-pointer w-56 h-60 rounded-lg relative"
       onClick={showProduct}
     >
       <figure className="relative mb-2 w-full h-4/5">
@@ -39,27 +84,9 @@ export const Card = ({ id, title, price, category, description, image }) => {
           src={image}
           alt={description}
         />
-        <button
-          className="absolute top-0 right-0 flex justify-center items-center bg-white/70 w-6 h-6 rounded-full m-2"
-          onClick={handleAddProductToCard}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="size-4"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"
-            />
-          </svg>
-        </button>
+        {renderIcon()}
       </figure>
-      <p className="flex justify-between items-center">
+      <p className="flex justify-between items-center p-2">
         <span className="text-sm font-light">{title}</span>
         <span className="text-lg font-medium">${price}</span>
       </p>

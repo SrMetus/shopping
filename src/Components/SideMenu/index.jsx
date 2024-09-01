@@ -2,7 +2,7 @@ export const SideMenu = ({ openMenu, handleCloseMenu, title, children }) => {
   return (
     <aside
       className={`${openMenu ? "flex" : "hidden"} 
-        top-[68px] w-[360px] h-[calc(100vh-68px)] flex-col fixed right-0 border scrollable-cards border-black rounded-lg bg-white z-50`}
+        top-[68px] w-[430px] h-[calc(100vh-68px)] flex-col fixed right-0 border border-black rounded-lg bg-white z-50`} // Añade z-50 o un valor similar
     >
       <div className="flex justify-between items-center p-3">
         <h2 className="text-xl font-medium">{title}</h2>
@@ -26,7 +26,7 @@ export const SideMenu = ({ openMenu, handleCloseMenu, title, children }) => {
           </svg>
         </button>
       </div>
-      <div className="p-5">{children}</div>
+      <div className="p-2">{children}</div>
     </aside>
   );
 };
