@@ -1,18 +1,29 @@
 import { useShoppingCard } from "../../Hooks/useShoppingCard";
 
 export const Card = ({ title, price, category, description, image }) => {
-  const { increment, openProductDetail, setProductToShow, addProductToCard } = useShoppingCard();
+  const {
+    increment,
+    openProductDetail,
+    closeProductDetail,
+    setProductToShow,
+    addProductToCard,
+    openCheckoutSideMenu,
+    closeCheckoutSideMenu,
+  } = useShoppingCard();
 
   const showProduct = () => {
-    openProductDetail()
-    setProductToShow({ title, price, category, description, image })
-  }
+    openProductDetail();
+    setProductToShow({ title, price, category, description, image });
+    closeCheckoutSideMenu();
+  };
 
   const handleAddProductToCard = (e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Evita que el clic en el botón propague al contenedor de la tarjeta
     increment();
     addProductToCard({ title, price, category, description, image });
-  }
+    openCheckoutSideMenu();
+    closeProductDetail();
+  };
 
   return (
     <div

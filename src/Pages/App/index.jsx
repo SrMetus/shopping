@@ -2,6 +2,7 @@ import { useRoutes, BrowserRouter } from 'react-router-dom';
 import { Navbar } from '../../Components/Navbar';
 import { Layout } from '../../Components/Layout';
 import { ShoppingCardProvider } from '../../Context';
+import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu';
 import Home from '../Home';
 import MyAccount from '../MyAccount';
 import MyOrder from '../MyOrder';
@@ -29,6 +30,7 @@ function App() {
       <BrowserRouter>
       <Navbar />
         <Layout>
+          <CheckoutSideMenu />
           <AppRouter />
         </Layout>
       </BrowserRouter>
