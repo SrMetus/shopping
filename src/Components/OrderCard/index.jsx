@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const OrderCard = (props) => {
-  const { title, imgUrl, price } = props;
+  const { id, title, imgUrl, price, handleDelete } = props;
   const [quantity, setQuantity] = useState(1);
   const [total, setTotal] = useState(price);
 
@@ -46,7 +46,8 @@ export const OrderCard = (props) => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-6"
+          className="size-4"
+          onClick={() => handleDelete(id)}
         >
           <path
             strokeLinecap="round"

@@ -3,7 +3,12 @@ import { SideMenu } from "../SideMenu";
 import { OrderCard } from "../OrderCard";
 
 export const CheckoutSideMenu = () => {
-  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cardProducts } = useShoppingCard();
+  const { isCheckoutSideMenuOpen, closeCheckoutSideMenu, cardProducts, setCardProducts } = useShoppingCard();
+
+  const handleDelete = (id) => {
+    const filteredProducts = cardProducts.filter(product => product.id != id)
+    setCardProducts(filteredProducts)
+  }
 
   return (
     <SideMenu
@@ -15,9 +20,11 @@ export const CheckoutSideMenu = () => {
         {cardProducts.map((product) => (
           <OrderCard
             key={product.id}
+            id={product.id}
             title={product.title}
             price={product.price}
             imgUrl={product.image}
+            handleDelete={handleDelete}
           />
         ))}
       </div>

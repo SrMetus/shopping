@@ -31,6 +31,7 @@ export const ShoppingCardProvider = ({ children }) => {
     setProductToShow,
     cardProducts,
     addProductToCard,
+    setCardProducts,
   }
 
   return (
