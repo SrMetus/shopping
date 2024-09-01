@@ -6,10 +6,14 @@ export const ShoppingCardProvider = ({ children }) => {
   const [count, setCount] = useState(0);
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [productToShow, setProductToShow] = useState({});
+  const [cardProducts, setCardProducts] = useState([])
 
   const increment = () => setCount(count + 1);
   const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
+  const addProductToCard = (product) => {
+    setCardProducts(prevProducts => [...prevProducts, product]);
+  }
 
   const contextValue = {
     count,
@@ -18,7 +22,9 @@ export const ShoppingCardProvider = ({ children }) => {
     closeProductDetail,
     isProductDetailOpen,
     productToShow,
-    setProductToShow
+    setProductToShow,
+    cardProducts,
+    addProductToCard,
   }
 
   return (

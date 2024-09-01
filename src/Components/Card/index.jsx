@@ -1,11 +1,17 @@
 import { useShoppingCard } from "../../Hooks/useShoppingCard";
 
 export const Card = ({ title, price, category, description, image }) => {
-  const { increment, openProductDetail, setProductToShow } = useShoppingCard();
+  const { increment, openProductDetail, setProductToShow, addProductToCard } = useShoppingCard();
 
   const showProduct = () => {
     openProductDetail()
     setProductToShow({ title, price, category, description, image })
+  }
+
+  const handleAddProductToCard = (e) => {
+    e.stopPropagation();
+    increment();
+    addProductToCard({ title, price, category, description, image });
   }
 
   return (
@@ -24,10 +30,7 @@ export const Card = ({ title, price, category, description, image }) => {
         />
         <button
           className="absolute top-0 right-0 flex justify-center items-center bg-white/70 w-6 h-6 rounded-full m-2"
-          onClick={(e) => {
-            e.stopPropagation();
-            increment();
-          }}
+          onClick={handleAddProductToCard}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
