@@ -18,9 +18,12 @@ export const ShoppingCardProvider = ({ children }) => {
     setCardProducts(prevProducts => [...prevProducts, product]);
   }
 
+  const [order, setOrder] = useState([]);
+
   const contextValue = {
     count,
     increment,
+    setCount,
     isProductDetailOpen,
     openProductDetail,
     closeProductDetail,
@@ -32,6 +35,8 @@ export const ShoppingCardProvider = ({ children }) => {
     cardProducts,
     addProductToCard,
     setCardProducts,
+    order,
+    setOrder,
   }
 
   return (
